@@ -1,0 +1,120 @@
+/* ini css */
+.brand-icon {
+    width: 30px;
+    /* Adjust the size as needed */
+    height: auto;
+    margin-right: 8px;
+    /* Adds some space between the icon and the text */
+}
+
+main {
+    display: flex;
+}
+
+.main-title {
+    text-align: center;
+}
+
+form {
+    padding: 20px;
+    background-color: lightgrey;
+    border-radius: 3px;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+
+.form-container {
+    flex-basis: 50%;
+    padding: 48px;
+}
+
+.result-container {
+    flex-basis: 50%;
+    padding: 48px;
+    /* display: none; */
+}
+
+.button {
+    height: 32px;
+    border-radius: 4px;
+    border: none;
+}
+
+.bg-lightblue {
+    background-color: rgb(99, 99, 240);
+    color: white;
+}
+
+.bg-whitesmoke {
+    background-color: whitesmoke;
+}
+
+.form-btn-container {
+    margin-top: 24px;
+    margin-bottom: 16px;
+}
+
+input [type=number] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: monospace;
+    font-size: 14px;
+}
+
+footer {
+    text-align: center;
+}
+
+.hasil {
+    text-align: center;
+    background-color: lightgrey;
+    border-radius: 3px;
+    padding: 15px;
+}
+
+.BMI-text-result {
+    font-size: 20px;
+}
+
+.BMI-number-result {
+    font-size: 35px;
+    margin-block-start: 15px;
+    border-radius: 3px;
+    padding: 10px;
+}
+
+.info-penyakit {
+    text-align: center;
+    background-color: lightgrey;
+    border-radius: 3px;
+    padding: 15px;
+}
+
+.beberapa-penyakit {
+    font-size: 20px;
+}
+
+.download-section {
+    text-align: center;
+}
+
+.image-size {
+    max-width: 64px;
+    max-height: 64px;
+    width: auto;
+    height: auto;
+}
+
+@media only screen and (max-width: 480px) {
+    main {
+        flex-direction: column;
+    }
+}
