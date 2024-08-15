@@ -1,46 +1,35 @@
-/* ini css */
-.brand-icon {
-    width: 30px;
-    /* Adjust the size as needed */
-    height: auto;
-    margin-right: 8px;
-    /* Adds some space between the icon and the text */
+/* For this file */
+body {
+    font-family: monospace;
+    justify-content: center;
+    align-items: center;
 }
 
-main {
+.quiz-container {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    background: yellow;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    margin-left: 100px;
+    margin-right: 100px;
 }
 
-.main-title {
+.quiz-question {
     text-align: center;
+    margin-bottom: 0;
+    padding-bottom: 0   ;
 }
 
-form {
-    padding: 20px;
-    background-color: lightgrey;
-    border-radius: 3px;
-}
-
-.form-group {
-    margin-bottom: 16px;
-}
-
-
-.form-container {
-    flex-basis: 50%;
-    padding: 48px;
-}
-
-.result-container {
-    flex-basis: 50%;
-    padding: 48px;
-    /* display: none; */
-}
-
+/* Imported  */
 .button {
     height: 32px;
     border-radius: 4px;
     border: none;
+    padding-bottom: 20px;
 }
 
 .bg-lightblue {
@@ -50,11 +39,6 @@ form {
 
 .bg-whitesmoke {
     background-color: whitesmoke;
-}
-
-.form-btn-container {
-    margin-top: 24px;
-    margin-bottom: 16px;
 }
 
 input [type=number] {
@@ -71,46 +55,6 @@ input [type=number] {
 
 footer {
     text-align: center;
-}
-
-.hasil {
-    text-align: center;
-    background-color: lightgrey;
-    border-radius: 3px;
-    padding: 15px;
-}
-
-.BMI-text-result {
-    font-size: 20px;
-}
-
-.BMI-number-result {
-    font-size: 35px;
-    margin-block-start: 15px;
-    border-radius: 3px;
-    padding: 10px;
-}
-
-.info-penyakit {
-    text-align: center;
-    background-color: lightgrey;
-    border-radius: 3px;
-    padding: 15px;
-}
-
-.beberapa-penyakit {
-    font-size: 20px;
-}
-
-.download-section {
-    text-align: center;
-}
-
-.image-size {
-    max-width: 64px;
-    max-height: 64px;
-    width: auto;
-    height: auto;
 }
 
 @media only screen and (max-width: 480px) {

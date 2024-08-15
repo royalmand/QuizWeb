@@ -2,6 +2,43 @@
 
 console.log("linked success");
 
+const quizData = [
+    {
+      question: "What is the capital of France?",
+      options: ["Paris", "Berlin", "Rome", "Madrid"],
+      correctAnswer: "Paris"
+    },
+    {
+      question: "Who wrote 'To Kill a Mockingbird'?",
+      options: ["Harper Lee", "J.K. Rowling", "Mark Twain", "Jane Austen"],
+      correctAnswer: "Harper Lee"
+    },
+    // Add more questions as needed
+  ];
+  
+
+  function renderQuestionOptions() {
+      /**
+   *  Renders the question options for the quiz.
+   * 
+   *  Iterates through the quizData array, concatenating the questions and 
+   *  storing the options in separate variables. The current question is then 
+   *  inserted into the HTML element with the id "current-question".
+   * 
+   *  @return {void}
+   */
+    let currentQuestion = "";
+    let currentOptions = [];
+    for (let i in quizData) {
+        currentQuestion += quizData[i].question;
+        currentOptions = quizData[i].options;
+        console.log(currentQuestion);
+        console.log(currentOptions);
+      }
+    
+    // Insert the result into the HTML element with id "output-bmi"
+    document.getElementById("current-question").textContent = currentQuestion.question;
+  }
 
 function formValidate() {
     let inputWeight = document.getElementById("input-weight").value;

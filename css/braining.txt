@@ -1,0 +1,33 @@
+https://chatgpt.com/share/9fe39e7c-e7bb-4e04-a9d7-7113f6e0980d
+
+main goal : bermain quiz dengan soal sebanyak 3
+dimana user akan dapat 1 pertanyaan, lalu dijawab 
+dan akan dilanjut ke pertanyaan selanjutnya
+hingga mencapai 3 pertanyaan
+dan akan ada fungsi untuk hitung score akhir
+
+dimana di css, score akhir akan terlihat kalau sudah 
+menyelesaikan quiznya 
+
+html 
+- siapin id untuk pertanyaan, jawaban optionnya
+- direct tombol submit dan next mau kaya gimana 
+- buat score section ini blm 
+
+css 
+- Style the .score-container to make it visible and appealing when the quiz is finished.
+
+js 
+- soal disimpen di object const
+- buat looping agar bisa loop soal dan option 
+    logicnya: 
+        - soal yg sudah diprint, tidak bisa diprint lagi
+        - bermain hanya sebanyak 3x 
+        - ada if statement, kaya gini kasarnya 
+        misal berhasil print soal dan di show ke html
+        nah kalo dah dijawab, akan lanjut ke loop selanjutnya. jadi ga sembarang looping gitu aj
+
+- fungsi u/ hitung point soal 
+- tambah addeventlistener ke button 
+- Create functions to handle user selections and store the selected answers.
+
