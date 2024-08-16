@@ -22,6 +22,21 @@ const quizData = [
         question: "Which planet is known as the Red Planet?",
         options: ["Mars", "Venus", "Jupiter", "Saturn"],
         correctAnswer: "Mars"
+    },
+    {
+        question: "What is the chemical symbol for water?",
+        options: ["H2O", "O2", "CO2", "NaCl"],
+        correctAnswer: "H2O"
+    },
+    {
+        question: "In what year did World War II end?",
+        options: ["1945", "1939", "1965", "1955"],
+        correctAnswer: "1945"
+    },
+    {
+        question: "What is the smallest prime number?",
+        options: ["1", "2", "3", "5"],
+        correctAnswer: "2"
     }
     // Add more questions as needed
   ];
@@ -95,7 +110,7 @@ nextButton.addEventListener("click", () => {
         } else {
             // If no more questions, hide the next button and show the submit button
             nextButton.style.display = "none";
-            submitButton.Button.style.display = "inline";
+            submitButton.style.display = "inline";
         }
     } else {
         alert("Please select an option to proceed.");
@@ -147,7 +162,7 @@ function restartQuiz() {
 
     // Hide the result section and show the quiz container
     document.getElementById("result").style.display = "none";
-    document.querySelector(".quiz-container").style.display = "block"
+    document.querySelector(".quiz-container").style.display = "block";
 
     // Reset the buttons 
     nextButton.style.display = "inline";
