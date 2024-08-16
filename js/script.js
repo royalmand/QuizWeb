@@ -13,95 +13,146 @@ const quizData = [
       options: ["Harper Lee", "J.K. Rowling", "Mark Twain", "Jane Austen"],
       correctAnswer: "Harper Lee"
     },
+    {
+        question: "What is the capital of Indonesia?",
+        options: ["Lombok", "Kalimantan", "Bali", "Jakarta"],
+        correctAnswer: "Paris"
+    },
+    {
+        question: "Which planet is known as the Red Planet?",
+        options: ["Mars", "Venus", "Jupiter", "Saturn"],
+        correctAnswer: "Mars"
+    }
     // Add more questions as needed
   ];
   
+// Variables to track the current question
+let currentQuestionIndex = 0;
+let score = 0;
 
-  function renderQuestionOptions() {
-      /**
-   *  Renders the question options for the quiz.
-   * 
-   *  Iterates through the quizData array, concatenating the questions and 
-   *  storing the options in separate variables. The current question is then 
-   *  inserted into the HTML element with the id "current-question".
-   * 
-   *  @return {void}
-   */
-    let currentQuestion = "";
-    let currentOptions = [];
-    for (let i in quizData) {
-        currentQuestion += quizData[i].question;
-        currentOptions = quizData[i].options;
-        console.log(currentQuestion);
-        console.log(currentOptions);
-      }
+// Function to display the current question and its options
+function displayQuestion() {
+    // Get the current question
+    const currentQuestion = quizData[currentQuestionIndex];
     
-    // Insert the result into the HTML element with id "output-bmi"
-    document.getElementById("current-question").textContent = currentQuestion.question;
-  }
+     // Select the HTML elements where the question and options will be displayed
+    const questionElement = document.getElementById("currentQuestion");
+    const optionsElement = document.getElementById("options");
 
-function formValidate() {
-    let inputWeight = document.getElementById("input-weight").value;
-    let inputHeight = document.getElementById("input-height").value;
-    console.log(`Isi inputan berat badan: ${inputWeight}`);
-    console.log(`Isi inputan tinggi badan: ${inputHeight}`);
+    // Set the text of the question element to the current question
+    questionElement.innerText = currentQuestion.question;
 
-    const weight = document.getElementById("input-weight");
-    const height = document.getElementById("input-height");
-    const age = document.getElementById("input-age");
+    // Clear all previous options
+    optionsElement.innerHTML = "";
 
-    (inputWeight == '' || inputHeight == "")
-        ? alert("Inputan berat badan tidak boleh kosong!")
-        : result(inputHeight,inputWeight);
-    
-    console.log("form validation success");
+    // Loop through each option and create a radio button for each
+    currentQuestion.options.forEach((option, index) => {
+        const optionElement = document.createElement("div");
+        optionElement.classList.add("option");
 
-    weight.addEventListener("input", function() {
-        this.value = this.value.replace(/[^0-9]/g, '');
-    });
+        const inputElement = document.createElement("input");
+        inputElement.type = "radio";
+        inputElement.name = "quizOption";
+        inputElement.id = `option${index}`;
+        inputElement.value = option;
 
-    height.addEventListener("input", function() {
-        this.value = this.value.replace(/[^0-9]/g, '');
-    });
-    
-    age.addEventListener("input", function() {
-        this.value = this.value.replace(/[^0-9]/g, '');
+        const labelElement = document.createElement("label");
+        labelElement.htmlFor = `option${index}`;
+        labelElement.innerText = option;
+
+        optionElement.appendChild(inputElement);
+        optionElement.appendChild(labelElement);
+
+        optionsElement.appendChild(optionElement);
     });
 }
 
-function result(inputHeight,inputWeight) {
-    let convertCmtoM = inputHeight / 100;
-        let resultHeight = Math.pow(convertCmtoM, 2);
-        console.log(`Hasil perhitungan pangkat: ${resultHeight}`);
-        let bmiResult = inputWeight / resultHeight;
-        let stringResultOne;
-        let stringResultTwo;
+
+// Call the displayQuestion function when the page loads
+displayQuestion();
     
-        if (inputWeight / resultHeight < 18.5) {
-            stringResultOne = "Anda memiliki berat badan berlebih";
-            stringResultTwo = "Hasil BMI berada dibawah 18.5";
-            console.log(`BMI: ${bmiResult}, Kekurangan berat badan`);
-        } else if (inputWeight / resultHeight >= 18.5 && inputWeight / resultHeight <= 24.9) {
-            stringResultOne = "Anda memiliki berat badan normal";
-            stringResultTwo = "Hasil BMI berada diantara 18.5 - 24.9";
-            console.log(`BMI: ${bmiResult}, Normal (ideal)`);
-        } else if (inputWeight / resultHeight >= 25 && inputWeight / resultHeight <= 29.9) {
-            stringResultOne = "Anda memiliki berat badan berlebih";
-            stringResultTwo = "Hasil BMI berada diantara 25 - 29.9";
-            console.log(`BMI: ${bmiResult}, Kelebihan berat badan`);
-        } else if (inputWeight / resultHeight >= 30) {
-            stringResultOne = "Anda masuk ke dalam kategori kegemukan (obesitas)";
-            stringResultTwo = "Hasil BMI berada di 30 atau lebih";
-            console.log(`BMI: ${bmiResult}, Kegemukan (obesitas)`);
+// Get the Next and Submit Button 
+const nextButton = document.getElementById("nextButton");
+const submitButton = document.getElementById("submitButton");
+
+// Event listener for the Next button 
+nextButton.addEventListener("click", () => {
+    // Checck which option is selected
+    const selectedOption = document.querySelector('input[name="quizOption"]:checked');
+    
+    if (selectedOption) {
+        // Check if the selected option is correct
+        if (selectedOption.value === quizData[currentQuestionIndex].correctAnswer) {
+            score++;
         }
-    
-    // Insert the result into the HTML element with id "output-bmi"
-    document.getElementById("output-bmi").textContent = bmiResult;
 
-    // Insert the result into the HTML element with id "output-note"
-    document.getElementById("output-note").textContent = stringResultOne;
-    
-    // Insert the result into the HTML element with id "output-sntce-one"
-    document.getElementById("output-sntce-one").textContent = stringResultTwo;
+        // Move to the next question
+        currentQuestionIndex++;
+
+        // Check if there are more questions
+        if (currentQuestionIndex < quizData.length) {
+            displayQuestion();
+        } else {
+            // If no more questions, hide the next button and show the submit button
+            nextButton.style.display = "none";
+            submitButton.Button.style.display = "inline";
+        }
+    } else {
+        alert("Please select an option to proceed.");
+    }
+});
+
+
+// Event listener for the Submit button 
+submitButton.addEventListener("click", () => {
+    // Hide the quiz container and display the result 
+    document.querySelector(".quiz-container").style.display = "none";
+    showResult();
+});
+
+// Function to display the result 
+function showResult() {
+    const resultElement = document.getElementById("result");
+    resultElement.style.display = "block";
+    resultElement.innerHTML = `
+    <h2>Your Score: ${score}/${quizData.length}</h2>
+    <p>${getResultMessage(score)}</p>
+    <button id="restartButton">Restart Quiz</button>
+    `;
+
+    // Add event listener to the restart button 
+    document.getElementById("restartButton").addEventListener("click", () => {
+        restartQuiz();
+    });
 }
 
+
+// Function to provide a message based on the score
+function getResultMessage(score) {
+    if (score === quizData.length) {
+        return "Excelent! You have answered all questions correctly.";
+    } else  if (score >= (quizData.length / 2)) {
+        return "Good! You have answered more than half of the questions correctly.";
+    } else {
+        return "Keep trying!";
+    }
+}
+
+
+// Function to restart the quiz
+function restartQuiz() {
+    // Reset variables
+    currentQuestionIndex = 0;
+    score = 0;
+
+    // Hide the result section and show the quiz container
+    document.getElementById("result").style.display = "none";
+    document.querySelector(".quiz-container").style.display = "block"
+
+    // Reset the buttons 
+    nextButton.style.display = "inline";
+    submitButton.style.display = "none";
+
+    // Display the first question
+    displayQuestion();
+}
